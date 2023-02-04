@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Portfolio Website by CHATGPT</title>
+    <style>
+      /* Add styles for header section */
+      header {
+        height: 100vh;
+        background-size: cover;
+        background-color: #b3e0dc;
+        background-position: center;
+        position: relative;
+        display: flex;
+        align-items: center;
+      }
+
+      .header-content {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        display: flex;
+        flex-direction: initial;
+      }
+
+      .header-content h1 {
+        position: relative;
+        color: #025043;
+        font-size: 112px;
+        font-weight: bold;
+        margin-top: 150px;
+        z-index: 3;
+        text-decoration: underline;
+        left: -150px;
+      }
+
+      .header-content img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: relative;
+        z-index: -1;
+        left: -130px;
+      }
+
+      #about-me {
+        display: flex;
+        align-items: center;
+        padding: 80px 0;
+      }
+
+      .about-me-left {
+        width: 50%;
+        text-align: center;
+      }
+
+      .about-me-left img {
+        width: 300px;
+        height: 300px;
+        border-radius: 50%;
+        border: 10px solid white;
+        box-shadow: 0px 0px 20px 5px #ddd;
+        transition: all 0.2s ease-in-out;
+      }
+
+      .about-me-left img:hover {
+        transform: scale(1.1);
+      }
+
+      .about-me-right {
+        width: 50%;
+        padding: 0 50px;
+      }
+
+      .about-me-right h2 {
+        font-size: 36px;
+        color: teal;
+        margin-bottom: 40px;
+      }
+
+      .about-me-right p {
+        font-size: 18px;
+        line-height: 1.5;
+      }
+
+      /* Add styles for navigation section */
+      nav {
+        position: fixed;
+        right: 0;
+        top: 50%;
+        transform: translateY(-50%);
+        background-color: #025043;
+        padding: 20px;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+      }
+
+      nav a {
+        display: block;
+        color: white;
+        padding: 10px;
+        text-decoration: none;
+        text-decoration: underline;
+      }
+
+      /* Add styles for services section */
+      .services {
+        background-color: teal;
+        color: white;
+        padding: 50px;
+      }
+
+      /* Add styles for resume section */
+      .resume {
+        background-color: #05998c;
+        padding: 50px;
+      }
+      .resume h2 {
+        color: white;
+      }
+
+      .resume p {
+        color: white;
+      }
+
+      /* Add styles for contact form */
+
+      #contact {
+        padding: 60px 0;
+      }
+
+      #contact-form {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+      }
+
+      #contact-form input,
+      textarea {
+        width: 100%;
+        padding: 20px;
+        margin-bottom: 20px;
+        font-size: 18px;
+        border: 2px solid lightgray;
+        border-radius: 5px;
+      }
+
+      #contact-form textarea {
+        height: 200px;
+      }
+
+      #contact-form button {
+        width: 100%;
+        padding: 20px;
+        background-color: teal;
+        color: white;
+        font-size: 18px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+      }
+
+      #contact-form button:hover {
+        background-color: orange;
+      }
+
+      /* Add styles for smooth scroll effect */
+      .smooth-scroll {
+        scroll-behavior: smooth;
+      }
+
+      #skills {
+        padding: 40px 0;
+        background-color: #b3e0dc;
+      }
+
+      .skills-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        padding: 40px;
+        border-radius: 20px;
+      }
+
+      .skill {
+        width: 30%;
+        text-align: center;
+      }
+
+      #skills h2 {
+        text-align: center;
+        color: #025043;
+        font-size: 40px;
+        text-decoration: underline;
+      }
+
+      .skill h3 {
+        font-size: 24px;
+        margin-bottom: 20px;
+        color: #025043;
+      }
+
+      .progress-bar {
+        height: 10px;
+        width: 100%;
+        background-color: lightgray;
+        border-radius: 10px;
+        overflow: hidden;
+        margin-bottom: 20px;
+        transition: width 1s ease;
+      }
+
+      .progress {
+        height: 100%;
+        background-color: #025043;
+        animation: progress-bar 2s ease-in-out;
+        width: 80%;
+      }
+
+      @keyframes progress-bar {
+        0% {
+          width: 0;
+        }
+        100% {
+          width: 100%;
+        }
+      }
+      .percentage {
+        display: inline-block;
+        margin-top: 10px;
+      }
+
+      #gallery {
+        padding: 50px;
+      }
+
+      #map {
+        padding: 60px 0;
+      }
+
+      #map iframe {
+        width: 100%;
+        height: 400px;
+        border: 2px solid lightgray;
+        border-radius: 5px;
+      }
+
+      #map p {
+        text-align: center;
+        margin-top: 20px;
+      }
+
+      body {
+        font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+          "Lucida Sans", Arial, sans-serif;
+      }
+
+      .image-gallery {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .image-gallery img {
+        width: 30%;
+        height: 300px;
+        object-fit: cover;
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px gray;
+        margin-bottom: 20px;
+        transition: transform 0.3s ease-in-out;
+      }
+
+      .image-gallery img:hover {
+        transform: scale(1.1);
+        cursor: pointer;
+      }
+
+      footer {
+        text-align: center;
+        padding: 40px 0;
+        background-color: teal;
+        color: white;
+      }
+
+      footer p {
+        font-size: 18px;
+        margin: 0;
+      }
+
+      footer p:hover {
+        transform: translateY(-5px);
+        transition: all 0.2s ease-in-out;
+      }
+
+      .contact-section {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 500px;
+      }
+
+      .image-slider {
+        width: 50%;
+        height: 110%;
+        overflow: hidden;
+        position: relative;
+      }
+
+      .image-slider img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        left: 0;
+        opacity: 0;
+        transition: opacity 0.5s ease-in-out;
+      }
+
+      .image-slider img:first-child {
+        opacity: 1;
+      }
+
+      .contact-form {
+        width: 40%;
+        background-color: white;
+        padding: 40px;
+        border-radius: 10px;
+        box-shadow: 5px 5px 10px gray;
+        text-align: center;
+      }
+
+      .contact-form h3 {
+        font-size: 36px;
+        margin-bottom: 40px;
+      }
+
+      .contact-form input,
+      .contact-form textarea {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 20px;
+        font-size: 18px;
+        border-radius: 5px;
+        border: none;
+        box-shadow: 5px 5px 10px gray;
+      }
+
+      .contact-form button[type="submit"] {
+        width: 100%;
+        padding: 10px;
+        font-size: 18px;
+        border-radius: 5px;
+        border: none;
+        background-color: teal;
+        color: white;
+        cursor: pointer;
+        transition: background-color 0.3s ease-in-out;
+      }
+
+      .contact-form button[type="submit"]:hover {
+        background-color: darkteal;
+      }
+
+      .discover-section {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        height: 30vh;
+        background-color: white;
+        color: teal;
+        font-size: 20px;
+        border-radius: 10px;
+      }
+
+      .discover-text {
+        padding-left: 0px;
+        width: 40%;
+        font-size: 60px;
+        font-weight: 600;
+      }
+      .discover-btn {
+        width: 20%;
+        height: 10vh;
+        background-color: orange;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 20px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.5s ease;
+        color: white;
+        font-size: 18px;
+  font-weight: bold;
+      }
+      .discover-btn:hover {
+        background-color: yellow;
+        transform: translateY(-5px);
+      }
+
+      .subscribe-section {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 50px;
+      }
+
+      .subscribe-heading {
+        font-size: 66px;
+        font-weight: bold;
+        color: teal;
+        margin-bottom: 20px;
+      }
+
+      input[type="emaill"] {
+        width: 70%;
+        padding: 10px;
+        font-size: 18px;
+        border: 1px solid teal;
+        border-radius: 5px;
+        margin-bottom: 20px;
+      }
+
+      .subscribe-button {
+        width: 30%;
+        padding: 10px 20px;
+        font-size: 18px;
+        background-color: orange;
+        color: white;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .subscribe-button:hover {
+        background-color: yellow;
+      }
+
+      .subscribe-sectionn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 20vh;
+        background-color: #fafafa;
+      }
+
+      .subscribe-formm {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 50%;
+        height: 50px;
+        padding: 10px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2),
+          0 6px 20px 0 rgba(0, 0, 0, 0.19);
+        border-radius: 10px;
+      }
+
+      input[type="emailll"],
+      input[type="search"] {
+        width: 30%;
+        height: 100%;
+        padding: 10px;
+        border-radius: 10px;
+        border: none;
+        font-size: 18px;
+        font-weight: bold;
+        margin-right: 20px;
+        transition: all 0.3s ease-in-out;
+      }
+
+      input[type="emailll"]:focus,
+      input[type="search"]:focus {
+        outline: none;
+        box-shadow: 0 0 10px #ffb900;
+      }
+
+      .login-button {
+        width: 20%;
+        height: 100%;
+        background-color: #ffb900;
+        border: none;
+        border-radius: 10px;
+        font-size: 18px;
+        font-weight: bold;
+        color: #fff;
+        cursor: pointer;
+        transition: all 0.3s ease-in-out;
+      }
+
+      .login-button:hover {
+        background-color: #fff;
+        color: #ffb900;
+      }
+    </style>
+
+    <script>
+      // Add JavaScript for parallax effect
+      window.addEventListener("scroll", function () {
+        let header = document.querySelector("header");
+        header.style.backgroundPositionY = -(window.pageYOffset / 3) + "px";
+      });
+
+      // Add JavaScript for form submission
+      function submitForm(event) {
+        event.preventDefault();
+        let name = document.querySelector("input[name='name']").value;
+        let email = document.querySelector("input[name='email']").value;
+        let message = document.querySelector("textarea[name='message']").value;
+        alert("Name: " + name + "\nEmail: " + email + "\nMessage: " + message);
+      }
+
+      const subscribeButton = document.querySelector(".subscribe-button");
+      subscribeButton.addEventListener("click", function (e) {
+        e.preventDefault();
+        alert("Thank you for subscribing!");
+      });
+    </script>
+  </head>
+
+  <body class="smooth-scroll">
+    <header>
+      <div class="header-content">
+        <h1>I am a Digtial Marketer</h1>
+        <img src="photo-1.jpg" alt="Header Image" />
+      </div>
+    </header>
+
+    <section id="about-me">
+      <div class="about-me-left">
+        <img src="umanand.jpg" alt="Profile Picture" />
+      </div>
+      <div class="about-me-right">
+        <h2>About Me</h2>
+        <p>
+          As a digital marketer, I bring a wealth of experience and expertise to
+          the table. I have a proven track record of creating and executing
+          successful marketing campaigns across various digital channels,
+          including social media, email marketing, and search engine
+          optimization (SEO). I am highly analytical and data-driven, always
+          striving to measure and improve the ROI of my campaigns.
+        </p>
+      </div>
+    </section>
+    <nav>
+      <a href="#services">Services</a>
+      <a href="#resume">Resume</a>
+      <a href="#contact">Contact</a>
+      <a href="#About">About</a>
+      <a href="#Blog">Blog</a>
+      <a href="#Skills">Skills</a>
+    </nav>
+    <section class="services" id="services">
+      <h2>Services Overview</h2>
+      <p>
+        Have the skills and knowledge to help businesses reach and engage their
+        target audiences in the digital space. Let's connect and discuss how I
+        can help you achieve your marketing goals.
+      </p>
+    </section>
+
+    <div class="subscribe-section">
+      <h2 class="subscribe-heading">Subscribe</h2>
+      <form>
+        <input type="emaill" placeholder="Enter your email" />
+        <button class="subscribe-button">Subscribe</button>
+      </form>
+    </div>
+
+    <section class="resume" id="resume">
+      <h2>Resume</h2>
+      <p>
+        As a digital marketer with a background in programming and experience
+        working with cutting-edge technologies like GPT, I am well-equipped to
+        create and implement effective digital marketing strategies that drive
+        results. Whether it's through data-driven SEO, PPC campaigns, or
+        leveraging the power of AI to create personalized marketing experiences,
+        I have the skills and knowledge to help businesses reach and engage
+        their target audiences in the digital space. Let's connect and discuss
+        how I can help you achieve your marketing goals.
+      </p>
+    </section>
+
+    <div class="discover-section">
+      <p class="discover-text">Are you ready to get notcied on web?</p>
+      <button class="discover-btn">Discover More</button>
+    </div>
+
+    <section id="skills">
+      <h2>Skills</h2>
+      <div class="skills-container">
+        <div class="skill">
+          <h3>HTML</h3>
+          <div class="progress-bar">
+            <div class="progress" style="width: 90%"></div>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>CSS</h3>
+          <div class="progress-bar">
+            <div class="progress" style="width: 80%"></div>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>Javascript</h3>
+          <div class="progress-bar">
+            <div class="progress" style="width: 60%"></div>
+          </div>
+        </div>
+
+        <div class="skill">
+          <h3>Google Ads</h3>
+          <div class="progress-bar">
+            <div class="progress" style="width: 80%"></div>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>SEO</h3>
+          <div class="progress-bar">
+            <div class="progress" style="width: 85%"></div>
+          </div>
+        </div>
+        <div class="skill">
+          <h3>CHATGPT</h3>
+          <div class="progress-bar">
+            <div class="progress" style="width: 100%"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="subscribe-sectionn">
+      <div class="subscribe-formm">
+        <input type="emailll" placeholder="Enter your email" />
+        <input type="search" placeholder="Search" />
+        <button class="login-button">Login</button>
+      </div>
+    </div>
+
+    <section id="gallery">
+      <div class="image-gallery">
+        <img src="Web image/1.png" alt="Image 1" />
+        <img src="Web image/2.png" alt="Image 2" />
+        <img src="Web image/3.png" alt="Image 3" />
+        <img src="Web image/4.png" alt="Image 4" />
+        <img src="Web image/5.png" alt="Image 5" />
+      </div>
+    </section>
+
+    <div class="contact-section">
+      <div class="image-slider">
+        <img src="Web image/contact us.png" alt="Image 1" />
+      </div>
+      <form class="contact-form">
+        <h3>Contact Us</h3>
+        <input type="text" placeholder="Your Name" />
+        <input type="email" placeholder="Your Email" />
+        <textarea placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+    <section id="map">
+      <h2>Location</h2>
+      <iframe
+        src="https://maps.google.com/maps?q=196+newmanglapuricolony+sultanpur+new+Delhi,+CA&t=&z=13&ie=UTF8&iwloc=&output=embed"
+        frameborder="0"
+        scrolling="no"
+        marginheight="0"
+        marginwidth="0"
+      ></iframe>
+    </section>
+    <footer>
+      <p>Created by Umanand & CHATGPT - 2023</p>
+    </footer>
+  </body>
+</html>
